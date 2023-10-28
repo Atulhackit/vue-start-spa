@@ -2,10 +2,10 @@
     <a 
         :class="activeClasses" 
         :href="page?.link?.url" 
-        :titile="`This is ${page?.link?.text} page.`"
+        :titile="`This is ${page?.link?.linkText} page.`"
         class="nav-link"
         arial-current="page">
-        {{ page?.link?.text }}
+        {{ page?.link?.linkText }}
     </a>
 </template>
 
@@ -29,6 +29,6 @@ export default {
 </script>
 <style>
 .emphasize{
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 </style>

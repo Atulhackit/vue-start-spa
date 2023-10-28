@@ -1,17 +1,20 @@
 [
     {
-        "link": { "text": "Home", "url": "home.html" },
+        "link": { "linkText": "Home", "url": "home.html" },
         "pageTitle": "Home page",
-        "content": "This is th home content"
+        "content": "This is th home content",
+        "published":true
     },
     {
-        "link": { "text": "about", "url": "about.html" },
+        "link": { "linkText": "about", "url": "about.html" },
         "pageTitle": "about page",
-        "content": "This is th about content"
+        "content": "This is th about content",
+        "published":true
     },
     {
-        "link": { "text": "contact", "url": "contact.html" },
+        "link": { "linkText": "contact", "url": "contact.html" },
         "pageTitle": "contact page",
-        "content": "This is th contact content"
+        "content": "This is th contact content",
+        "published":false
     }
 ]

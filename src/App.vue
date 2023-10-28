@@ -4,21 +4,26 @@
         :activePage="activePage" 
         :navlink-click="(index) => activePage = index">
     </app-nav-bar>
-
     <page-viewer 
-    v-if="pages.length>0"
-    :page="pages[activePage]">
+        v-if="pages.length>0"
+        :page="pages[activePage]">
     </page-viewer>
-    <div v-show="flase"></div>
+    <create-page
+        :page-created="pageCreated"
+    >
+    </create-page>
+    
 </template>
 <script>
 import AppNavBar from './components/AppNavBar.vue';
+import CreatePage from './components/CreatePage.vue';
 import PageViewer from './components/PageViewer.vue';
 
 export default {
     created(){
         this.getData()
     },
+
     data() {
         return {
             activePage: 0,
@@ -31,9 +36,13 @@ export default {
             let data= await res.json()
             this.pages=data
             // console.log(pages)
+        },
+        pageCreated(pageObj){
+            console.log(pageObj)
+            this.pages.push(pageObj)
         }
     },
-    components: { AppNavBar,PageViewer }
+    components: { AppNavBar,PageViewer,CreatePage }
 }
 
 </script>

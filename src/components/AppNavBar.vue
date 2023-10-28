@@ -24,10 +24,20 @@
 import NavbarLink from './NavbarLink.vue'
 export default {
     props: ['pages', 'activePage', 'navlinkClick'],
+    created(){
+        this.getThemeSettings()
+    },
     data() {
         return {
             theme: 'light',
         }
+    },
+    computed:{
+        publishedPages(){
+            console.log(this.pages)
+            return this.pages.filter((page)=>page.published)
+        }
+        
     },
     methods: {
         changeTheme() {
@@ -38,7 +48,17 @@ export default {
             } else {
                 this.theme = "light"
             }
-        }
+            this.storeThemeSettings()
+        },
+        storeThemeSettings(){
+            localStorage.setItem("theme",this.theme)
+        },
+        getThemeSettings(){
+           let theme= localStorage.getItem("theme",this.theme)
+           if(theme){
+            this.theme=theme
+           }
+        },
     },
     components: {
         NavbarLink
