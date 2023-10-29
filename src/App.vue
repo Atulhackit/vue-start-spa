@@ -1,15 +1,14 @@
 <template>
     <app-nav-bar 
         :pages="pages" 
-        :activePage="activePage" 
-        :navlink-click="(index) => activePage = index">
+        :activePage="activePage" >
     </app-nav-bar>
     <page-viewer 
         v-if="pages.length>0"
         :page="pages[activePage]">
     </page-viewer>
     <create-page
-        :page-created="pageCreated"
+        @page-created="pageCreated"
     >
     </create-page>
     
@@ -22,6 +21,9 @@ import PageViewer from './components/PageViewer.vue';
 export default {
     created(){
         this.getData()
+        this.$bus.$on("navbarLinkActivated",(index)=>{
+            this.activePage=index;
+        })
     },
 
     data() {
