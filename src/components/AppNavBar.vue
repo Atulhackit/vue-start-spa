@@ -12,12 +12,12 @@
                     </navbar-link>
                     <li>
                         <router-link 
-                            to="/pages/create"
+                            to="/pages"
                             class="nav-link" 
                             active-class="active"
                             :titile="`This is ${page?.link?.linkText} page.`" 
                             arial-current="page">
-                            Create page
+                            Pages
                         </router-link>
                     </li>
 
@@ -33,9 +33,13 @@
 <script>
 import NavbarLink from './NavbarLink.vue'
 export default {
+    inject:['$pages','$bus'],
     created() {
         this.getThemeSettings()
         this.pages=this.$pages.getAllPages()
+        this.$bus.$on('page-updated',()=>{
+            this.page=[...this.$pages.getAllPages()]
+        })
     },
     data() {
         return {
