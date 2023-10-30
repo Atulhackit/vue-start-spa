@@ -12,7 +12,7 @@
                     </navbar-link>
                     <li>
                         <router-link 
-                            to="/create"
+                            to="/pages/create"
                             class="nav-link" 
                             active-class="active"
                             :titile="`This is ${page?.link?.linkText} page.`" 
