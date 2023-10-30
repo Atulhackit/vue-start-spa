@@ -1,21 +1,20 @@
 <template>
     <li>
-        <a 
-        class="nav-link"
-        :class="activeClasses" 
-        :href="page?.link?.url" 
-        :titile="`This is ${page?.link?.linkText} page.`"
-        arial-current="page"
-        @click.prevent="$bus.$emit('navbarLinkActivated',index)"
-        >
-        {{ page?.link?.linkText }}
-    </a>
+        <router-link 
+            :to="`/${index}`"
+            class="nav-link" 
+            :class="activeClasses" 
+            :href="page?.link?.url"
+            :titile="`This is ${page?.link?.linkText} page.`" arial-current="page"
+            >
+            {{ page?.link?.linkText }}
+        </router-link>
     </li>
 </template>
 
 <script>
 export default {
-    props: ['page', 'index','isActive'],
+    props: ['page', 'index', 'isActive'],
     computed: {
         activeClasses() {
             return {
@@ -32,7 +31,7 @@ export default {
 }
 </script>
 <style>
-.emphasize{
+.emphasize {
     text-decoration: underline !important;
 }
 </style>

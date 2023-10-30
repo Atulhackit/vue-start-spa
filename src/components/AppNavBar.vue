@@ -12,6 +12,15 @@
                         @activated="$emit('activated')"
                         >
                     </navbar-link>
+                    <li>
+                        <router-link 
+                            to="/create"
+                            class="nav-link" 
+                            :titile="`This is ${page?.link?.linkText} page.`" 
+                            arial-current="page">
+                            Create page
+                        </router-link>
+                    </li>
 
             </ul>
             <form class="d-flex">

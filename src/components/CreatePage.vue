@@ -1,7 +1,7 @@
 <template>
     <div class="container mb-3">
-        <form action="">
-            <div class="col">
+        <form action="" class="form-container">
+            <div class="col ">
                 <div class="mb-3 col">
                     <label for="pageTitle" class="form-label">
                         Page Title
@@ -14,47 +14,48 @@
                     </label>
                     <textarea type="text" class="form-control" rows="5" v-model="content"></textarea>
                 </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="pageTitle" class="form-label">
-                            Link Text
-                        </label>
-                        <input type="text" class="form-control" v-model="linkText" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="pageTitle" class="form-label">
-                            Link Url
-                        </label>
-                        <input type="text" class="form-control" v-model="linkUrl" />
-                    </div>
-                    <div class="row mb-3">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" v-model="published">
-                            <label class=" form-check-label" for="gridCheck1">Published</label>
-                        </div>
-                    </div>
+                <div class="mb-3">
+                <button class=" btn btn-primary" :disabled="isFormInvalid" @click.prevent="submitForm">
+                    Create page
+                </button>
+            </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="pageTitle" class="form-label">
+                        Link Text
+                    </label>
+                    <input type="text" class="form-control" v-model="linkText" />
                 </div>
                 <div class="mb-3">
-                    <button class=" btn btn-primary" :disabled="isFormInvalid" @click.prevent="submitForm">
-                        Create page
-                    </button>
+                    <label for="pageTitle" class="form-label">
+                        Link Url
+                    </label>
+                    <input type="text" class="form-control" v-model="linkUrl" />
+                </div>
+                <div class="row mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" v-model="published">
+                        <label class=" form-check-label" for="gridCheck1">Published</label>
+                    </div>
                 </div>
             </div>
+            
         </form>
     </div>
 </template>
 
 <script>
 export default {
-    emits:{
-        pageCreated({pageTitle,content,link}){
-            if(!pageTitle){
+    emits: {
+        pageCreated({ pageTitle, content, link }) {
+            if (!pageTitle) {
                 return false
             }
-            if(!content){
+            if (!content) {
                 return false
             }
-            if(!link || !link?.linkText|| !link?.linkUrl){
+            if (!link || !link?.linkText || !link?.linkUrl) {
                 return false
             }
             return true
@@ -88,7 +89,7 @@ export default {
                 },
                 published: this.published,
             })
-                this.pageTitle = "",
+            this.pageTitle = "",
                 this.content = "",
                 this.linkText = "",
                 this.linkUrl = "",
@@ -106,3 +107,9 @@ export default {
     }
 }
 </script>
+<style>
+.form-container {
+    display: flex;
+    gap: 2em;
+}
+</style>
