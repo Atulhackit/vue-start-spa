@@ -1,8 +1,5 @@
 <template>
-    <app-nav-bar 
-        :pages="pages" 
-        :activePage="activePage" >
-    </app-nav-bar>
+    <app-nav-bar></app-nav-bar>
     <router-view></router-view>
 
     <!-- <page-viewer 
@@ -21,26 +18,7 @@ import AppNavBar from './components/AppNavBar.vue';
 // import PageViewer from './components/PageViewer.vue';
 
 export default {
-    created(){
-        this.getData()
-        this.$bus.$on("navbarLinkActivated",(index)=>{
-            this.activePage=index;
-        })
-    },
-
-    data() {
-        return {
-            activePage: 0,
-            pages:[] 
-        };
-    },
     methods:{
-        async getData(){
-            let res=await fetch("pages.json")
-            let data= await res.json()
-            this.pages=data
-            // console.log(pages)
-        },
         pageCreated(pageObj){
             console.log(pageObj)
             this.pages.push(pageObj)

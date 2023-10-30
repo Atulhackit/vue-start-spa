@@ -7,15 +7,14 @@
                         v-for="(page, index) in pages" class="nav-item" 
                         :key="index"
                         :page="page"
-                        :isActive="activePage === index" 
                         :index="index"
-                        @activated="$emit('activated')"
                         >
                     </navbar-link>
                     <li>
                         <router-link 
                             to="/create"
                             class="nav-link" 
+                            active-class="active"
                             :titile="`This is ${page?.link?.linkText} page.`" 
                             arial-current="page">
                             Create page
@@ -34,13 +33,14 @@
 <script>
 import NavbarLink from './NavbarLink.vue'
 export default {
-    props: ['pages', 'activePage'],
     created() {
         this.getThemeSettings()
+        this.pages=this.$pages.getAllPages()
     },
     data() {
         return {
             theme: 'light',
+            data:[]
         }
     },
     computed: {

@@ -3,7 +3,7 @@
         <router-link 
             :to="`/${index}`"
             class="nav-link" 
-            :class="activeClasses" 
+            active-class="active"
             :href="page?.link?.url"
             :titile="`This is ${page?.link?.linkText} page.`" arial-current="page"
             >
@@ -14,15 +14,8 @@
 
 <script>
 export default {
-    props: ['page', 'index', 'isActive'],
-    computed: {
-        activeClasses() {
-            return {
-                active: this.isActive,
-                emphasize: this.isActive,
-            }
-        },
-    },
+    props: ['page', 'index'],
+    
     data() {
         return {
 
@@ -30,8 +23,3 @@ export default {
     }
 }
 </script>
-<style>
-.emphasize {
-    text-decoration: underline !important;
-}
-</style>
